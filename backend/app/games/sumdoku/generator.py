@@ -1,3 +1,4 @@
+import random
 from typing import Dict, List, Optional
 from collections import Counter
 
@@ -167,3 +168,37 @@ class Sumdoku:
         backtrack_count = self.count_backtrack(
             grid, 0, row_sums, col_sums, box_sums, 0, cap)
         return backtrack_count
+
+    def strip_to_unique(self, solved_grid: List[List[int]], max_attempts: int = 81,
+                         min_clues: int = 0, cap: int = 2) -> List[List[int]]:
+        """Greedily remove clues from a fully solved grid while it still has
+        exactly one solution, producing a puzzle (clue) grid.
+
+        Cell positions are shuffled and tried for removal one at a time, up to
+        `max_attempts` tries; a removal is kept only if `count_solutions` still
+        reports exactly one completion, otherwise it's reverted. Stops early
+        once `min_clues` remain, so a caller can target a clue count for a
+        given difficulty.
+        """
+        grid = [row[:] for row in solved_grid]
+        positions = [(r, c) for r in range(9) for c in range(9)]
+        random.shuffle(positions)
+
+        attempts = 0
+        for r, c in positions:
+            if attempts >= max_attempts:
+                break
+            clue_count = sum(1 for row in grid for v in row if v != 0)
+            if clue_count <= min_clues:
+                break
+            if grid[r][c] == 0:
+                continue
+
+            attempts += 1
+            backup = grid[r][c]
+            grid[r][c] = 0
+            solutions = self.count_solutions(grid, cap=cap)
+            if solutions != 1:
+                grid[r][c] = backup
+
+        return grid

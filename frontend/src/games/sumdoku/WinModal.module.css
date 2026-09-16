@@ -1,0 +1,138 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  position: relative;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px 28px;
+  width: min(92vw, 380px);
+  text-align: center;
+  box-shadow: var(--shadow-modal);
+  animation: rise 0.25s ease;
+}
+
+.checkmark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+}
+
+.checkCircle {
+  fill: none;
+  stroke: var(--color-success);
+  stroke-width: 2.5;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: strokeIn 0.5s ease forwards;
+}
+
+.checkPath {
+  fill: none;
+  stroke: var(--color-success);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: strokeIn 0.3s 0.4s ease forwards;
+}
+
+.title {
+  margin: 4px 0 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.time {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 8px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 4px 0 20px;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.shareButton,
+.playAgainButton {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  transition: transform 0.12s ease, opacity 0.15s ease;
+}
+
+.shareButton {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.playAgainButton {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+}
+
+.shareButton:hover,
+.playAgainButton:hover {
+  transform: translateY(-1px);
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes strokeIn {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

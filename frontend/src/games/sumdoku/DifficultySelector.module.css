@@ -1,0 +1,38 @@
+.group {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  gap: 2px;
+}
+
+.pill {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.pill:hover:not(:disabled) {
+  color: var(--color-text);
+}
+
+.pillActive {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.pillActive:hover {
+  color: var(--color-accent-text);
+}
+
+.pill:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
