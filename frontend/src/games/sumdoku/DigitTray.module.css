@@ -1,0 +1,79 @@
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: min(94vw, 520px);
+}
+
+.digits {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.digitButton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-tray-btn-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.digitButton:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.digitButton:active:not(:disabled) {
+  transform: translateY(0) scale(0.96);
+}
+
+.digitButton:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.digitValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.digitCount {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.eraseButton {
+  height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, opacity 0.2s ease;
+}
+
+.eraseButton:hover:not(:disabled) {
+  border-color: var(--color-accent);
+}
+
+.eraseButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
